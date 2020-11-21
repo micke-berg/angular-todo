@@ -13,30 +13,16 @@
     (keyup.enter)="addTodo()"
   />
 
-  <div class="todo-item" *ngFor="let todo of todosFiltered()" @fade>
-    <div class="todo-item-left">
-      <input type="checkbox" [(ngModel)]="todo.completed" />
-      <div
-        *ngIf="!todo.editing; else editingTodo"
-        class="todo-item-label"
-        [ngClass]="{ completed: todo.completed }"
-        (dblclick)="editTodo(todo)"
-      >
-        {{ todo.title }}
-      </div>
-      <input
-        *ngIf="todo.editing"
-        type="text"
-        class="todo-item-edit"
-        [(ngModel)]="todo.title"
-        (blur)="doneEditing(todo)"
-        (keyup.enter)="doneEditing(todo)"
-        (keyup.esc)="cancelEdit(todo)"
-        autofocus
-      />
-    </div>
-    <div class="remove-item" (click)="deleteTodo(todo.id)">&times;</div>
-  </div>
+  <to-do-item
+    *ngFor="let todo of todosFiltered()"
+    [todo]="todo"
+    (checkedItem)="doneEdit($event)"
+    (doubleClickedItem)="editTodo($event)"
+    (blurredItem)="doneEditing(todo)"
+    (enteredItem)="doneEditing(todo)"
+    (cancelledItem)="cancelEdit(todo)"
+    (deletedItem)="deleteTodo($event)"
+  ></to-do-item>
 
   <div class="extra-container">
     <div>
