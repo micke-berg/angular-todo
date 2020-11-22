@@ -30,6 +30,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoTitle = '';
+    this.todoService.todos = JSON.parse(localStorage.getItem('todos'));
   }
 
   addTodo(): void {

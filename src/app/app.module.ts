@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToDoItemComponent } from './components/todo-item/todo-item.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [AppComponent, TodoListComponent, ToDoItemComponent],
