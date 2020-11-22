@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Todo } from '../Models/Todo';
 
 @Injectable({
@@ -14,6 +14,11 @@ export class TodoService {
 
   constructor() {}
 
+  saveToStorage(): void {
+    console.log('hej');
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+  }
+
   addTodo(todoTitle: string): void {
     if (todoTitle.trim().length == 0) {
       return;
@@ -24,17 +29,19 @@ export class TodoService {
       completed: false,
       editing: false,
     });
-
+    this.saveToStorage();
     this.idForTodo++;
   }
 
   deleteTodo(id: number): void {
     this.todos = this.todos.filter((todo) => todo.id !== id);
+    this.saveToStorage();
   }
 
   editTodo(todo: Todo): void {
     this.beforeEditCache = todo.title;
     todo.editing = true;
+    this.saveToStorage();
   }
 
   doneEdit(todo: Todo): void {
@@ -42,6 +49,7 @@ export class TodoService {
       todo.title = this.beforeEditCache;
     }
     todo.editing = false;
+    this.saveToStorage();
   }
 
   cancelEdit(todo: Todo) {
@@ -64,6 +72,8 @@ export class TodoService {
   clearCompleted(): void {
     console.log('clearCompleted');
     this.todos = this.todos.filter((todo) => !todo.completed);
+    this.saveToStorage();
+    this.anyRemainingModel = true;
   }
 
   checkAllTodos(): void {
@@ -72,6 +82,7 @@ export class TodoService {
       (todo) => (todo.completed = (<HTMLInputElement>event.target).checked)
     );
     this.anyRemainingModel = this.anyRemaining();
+    this.saveToStorage();
   }
 
   todosFiltered(): Todo[] {
