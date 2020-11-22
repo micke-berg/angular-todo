@@ -1,0 +1,30 @@
+<div class="todo-item">
+  <div class="todo-item-left">
+    <input
+      type="checkbox"
+      [(ngModel)]="todo.completed"
+      (change)="todoService.doneEdit(todo)"
+    />
+    <div
+      class="todo-item-label"
+      *ngIf="!todo.editing; else editingTodo"
+      [ngClass]="{ completed: todo.completed }"
+      (dblclick)="todoService.editTodo(todo)"
+    >
+      {{ todo.title }}
+    </div>
+    <input
+      #editingTodo
+      type="text"
+      class="todo-item-edit"
+      *ngIf="todo.editing"
+      [(ngModel)]="todo.title"
+      (blur)="todoService.doneEdit(todo)"
+      (keyup.enter)="todoService.doneEdit(todo)"
+      (keyup.esc)="todoService.cancelEdit(todo)"
+    />
+  </div>
+  <div class="remove-item" (click)="todoService.deleteTodo(todo.id)">
+    &times;
+  </div>
+</div>
