@@ -1,10 +1,10 @@
 <div class="todo-item">
   <div class="todo-item-left">
-    <input
-      type="checkbox"
+    <mat-checkbox
       [(ngModel)]="todo.completed"
       (change)="todoService.doneEdit(todo)"
-    />
+    >
+    </mat-checkbox>
     <div
       class="todo-item-label"
       *ngIf="!todo.editing; else editingTodo"

@@ -10,7 +10,26 @@ export class TodoService {
   beforeEditCache: string = '';
   filter: string = 'all';
   anyRemainingModel: boolean = true;
-  todos: Todo[] = [];
+  todos: Todo[] = [
+    {
+      id: 1,
+      title: 'Make a ToDo list app',
+      completed: false,
+      editing: false,
+    },
+    {
+      id: 2,
+      title: 'Feed the cat',
+      completed: false,
+      editing: false,
+    },
+    {
+      id: 3,
+      title: 'Walk the dog',
+      completed: false,
+      editing: false,
+    },
+  ];
 
   constructor() {}
 
