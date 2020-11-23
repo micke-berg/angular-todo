@@ -9,6 +9,7 @@
 .remove-item {
   cursor: pointer;
   margin-left: 14px;
+
   &:hover {
     color: black;
   }
@@ -22,7 +23,7 @@
 
 .todo-item-label {
   padding: 10px;
-  border: 1px solid white;
+  border: none;
   margin-left: 12px;
 }
 
