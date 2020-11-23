@@ -8,20 +8,7 @@ import { Todo } from '../../Models/todo';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.scss'],
   providers: [TodoService],
-  animations: [
-    trigger('fade', [
-      transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'translateY(30px)',
-        }),
-        animate(200, style({ opacity: 1, transform: 'translateY(0px)' })),
-      ]),
-      transition(':leave', [
-        animate(200, style({ opacity: 0, transform: 'translateY(30px)' })),
-      ]),
-    ]),
-  ],
+  animations: [],
 })
 export class TodoListComponent implements OnInit {
   todoTitle: string;
