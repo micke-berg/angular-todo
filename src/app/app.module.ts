@@ -8,23 +8,23 @@ import { AppComponent } from './app.component';
 import { ToDoItemComponent } from './components/todo-item/todo-item.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatInputModule } from '@angular/material/input';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { MaterialModule } from './material/material.module';
+import { TodoInputComponent } from './components/todo-input/todo-input.component';
 @NgModule({
-  declarations: [AppComponent, TodoListComponent, ToDoItemComponent],
+  declarations: [
+    AppComponent,
+    TodoListComponent,
+    ToDoItemComponent,
+    HeaderComponent,
+    TodoInputComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatInputModule,
-    MatDividerModule,
-    MatButtonToggleModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

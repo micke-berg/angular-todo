@@ -1,0 +1,12 @@
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgb(62, 61, 61);
+  color: white;
+  .date {
+    padding: 10px;
+  }
+}
