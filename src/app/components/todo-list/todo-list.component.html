@@ -1,62 +1,58 @@
+<app-todo-input></app-todo-input>
 <div class="todo-list">
-  <mat-form-field>
-    <input
-      matInput
-      class="todo-input"
-      placeholder="Enter a todo..."
-      [(ngModel)]="todoTitle"
-      (keyup.enter)="addTodo()"
-    />
-  </mat-form-field>
-  <div class="items">
-    <todo-item
-      *ngFor="let todo of todoService.todosFiltered()"
-      [todo]="todo"
-    ></todo-item>
+  <div class="extra-container">
+    <div class="buttons">
+      <button
+        mat-button
+        [ngClass]="{ active: todoService.filter == 'all' }"
+        (click)="todoService.filter = 'all'"
+      >
+        View All
+      </button>
+      <span class="slash"> / </span>
+      <button
+        mat-button
+        [ngClass]="{ active: todoService.filter == 'active' }"
+        (click)="todoService.filter = 'active'"
+      >
+        Active
+      </button>
+      <span class="slash"> / </span>
+      <button
+        mat-button
+        [ngClass]="{ active: todoService.filter == 'completed' }"
+        (click)="todoService.filter = 'completed'"
+      >
+        Completed
+      </button>
+    </div>
+    <div *ngIf="todoService.atLeastOneCompleted()">
+      <button
+        mat-button
+        class="clear-completed"
+        (click)="todoService.clearCompleted()"
+      >
+        Clear Completed
+      </button>
+    </div>
   </div>
+  <div class="extra-container check-all">
+    <label>
+      <mat-checkbox
+        (change)="todoService.checkAllTodos()"
+        [(ngModel)]="!todoService.anyRemainingModel"
+        ><span class="check-all-text">Check All</span></mat-checkbox
+      >
+    </label>
 
-  <div class="bottom-container">
-    <div class="extra-container">
-      <div>
-        <label>
-          <mat-checkbox
-            (change)="todoService.checkAllTodos()"
-            [(ngModel)]="!todoService.anyRemainingModel"
-            >Check All</mat-checkbox
-          >
-        </label>
-      </div>
-      <div>{{ todoService.remaining() }} tasks left todo</div>
-    </div>
-    <div class="extra-container">
-      <div>
-        <button
-          mat-button
-          [ngClass]="{ active: todoService.filter == 'all' }"
-          (click)="todoService.filter = 'all'"
-        >
-          All
-        </button>
-        <button
-          mat-button
-          [ngClass]="{ active: todoService.filter == 'active' }"
-          (click)="todoService.filter = 'active'"
-        >
-          Active
-        </button>
-        <button
-          mat-button
-          [ngClass]="{ active: todoService.filter == 'completed' }"
-          (click)="todoService.filter = 'completed'"
-        >
-          Completed
-        </button>
-      </div>
-      <div *ngIf="todoService.atLeastOneCompleted()">
-        <button mat-button (click)="todoService.clearCompleted()">
-          Clear Completed
-        </button>
-      </div>
-    </div>
+    <div>{{ todoService.remaining() }} Tasks left todo</div>
+  </div>
+  <div role="list" class="items">
+    <app-todo-item
+      class="list-item"
+      [@listAnimation]="todo"
+      *ngFor="let todoItem of todoService.todosFiltered()"
+      [todo]="todoItem"
+    ></app-todo-item>
   </div>
 </div>
