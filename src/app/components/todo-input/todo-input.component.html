@@ -1,1 +1,13 @@
-<p>todo-input works!</p>
+<mat-form-field
+  appearance="standard"
+  [color]="task.color"
+  style="width: 100% !important"
+>
+  <input
+    matInput
+    class="todo-input"
+    placeholder="Enter a todo..."
+    [(ngModel)]="todoTitle"
+    (keyup.enter)="addTodo()"
+  />
+</mat-form-field>
