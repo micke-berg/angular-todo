@@ -1,55 +1,76 @@
 .todo-item {
-  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  animation-duration: 0.3s;
-}
-
-.remove-item {
-  cursor: pointer;
-  margin-left: 14px;
-
-  &:hover {
-    color: black;
-  }
+  border-bottom: 1px dotted #666;
+  width: 100%;
+  height: 60px;
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: white;
 }
 
 .todo-item-left {
-  // later
   display: flex;
   align-items: center;
+  margin-bottom: 4px;
 }
 
 .todo-item-label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
   padding: 10px;
   border: none;
   margin-left: 12px;
+  white-space: nowrap;
+  transition: 0.5s;
+}
+
+.completed {
+  position: relative;
+  text-decoration: line-through;
+  text-decoration-color: #69f0ae;
+  color: #666;
 }
 
 .todo-item-edit {
   font-size: 24px;
-  color: #2c3e50;
   margin-left: 12px;
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc; //override defaults
-  font-family: Helvetica, Arial, sans-serif;
-
+  margin-right: 18px;
+  border: none;
+  background: rgb(53, 53, 53);
+  color: white;
   &:focus {
     outline: none;
   }
 }
 
-.completed {
-  text-decoration: line-through;
-  color: grey;
+.todo-item-right {
+  display: flex;
+  align-items: center;
+  color: rgb(181, 181, 181);
 }
 
 .remove-item {
   cursor: pointer;
   margin-left: 14px;
+  transition: 0.3s;
   &:hover {
-    color: black;
+    font-weight: 700;
+    color: white;
   }
+}
+
+.edit-item {
+  &:hover {
+    font-weight: 700;
+    color: white;
+  }
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  border: 1px solid #666;
 }
