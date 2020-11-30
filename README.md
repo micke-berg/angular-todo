@@ -1,5 +1,7 @@
 # AngularTodoApp
 
+<img width="721" alt="Skärmavbild 2020-11-30 kl  10 12 10" src="https://user-images.githubusercontent.com/47321557/100599160-f3025e00-32ff-11eb-9309-eba8d2f6e68a.png">
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.1.
 
 ## Development server
