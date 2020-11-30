@@ -27,8 +27,6 @@ export class TodoService {
     console.log('save to storage');
     this.storageService.setData(todoListStorageKey, this.todoList);
     this.todosChanged.emit(this.todoList.slice());
-
-    // localStorage.setItem('todos', JSON.stringify(this.todoList));
   }
 
   addTodo(todoTitle: string): void {

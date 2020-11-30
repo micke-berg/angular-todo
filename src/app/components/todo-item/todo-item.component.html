@@ -17,7 +17,7 @@
   <ng-template #editingTodo>
     <input
       type="text"
-      class="todo-item-edit"
+      class="todo-edit-input"
       *ngIf="todo.editing"
       [(ngModel)]="todo.title"
       (blur)="todoService.doneEdit(todo)"
@@ -28,13 +28,13 @@
 
   <div class="todo-item-right">
     <div
-      class="edit-item"
+      class="edit-todo-item"
       (click)="todoService.editTodo(todo)"
       (dblclick)="todoService.editTodo(todo)"
     >
       <mat-icon>edit</mat-icon>
     </div>
-    <div class="remove-item" (click)="todoService.deleteTodo(todo.id)">
+    <div class="remove-todo-item" (click)="todoService.deleteTodo(todo.id)">
       <mat-icon>clear</mat-icon>
     </div>
   </div>

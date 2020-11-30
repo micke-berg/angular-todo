@@ -6,7 +6,6 @@ export interface Task {
   name: string;
   completed: boolean;
   color: ThemePalette;
-  subtasks?: Task[];
 }
 @Component({
   selector: 'app-todo-input',

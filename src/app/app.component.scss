@@ -1,21 +1,8 @@
 .app-container {
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: center;
-}
-
-.container {
-  max-width: 600px;
   margin: 0 auto;
-}
-
-button {
-  overflow: visible;
-  cursor: pointer;
-}
-
-button::-moz-focus-inner {
-  border: 0;
-  padding: 0;
 }
