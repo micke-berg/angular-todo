@@ -9,7 +9,7 @@
       >
         View All
       </button>
-      <span class="slash"> / </span>
+      /
       <button
         mat-button
         [ngClass]="{ active: todoService.filter == 'active' }"
@@ -17,7 +17,7 @@
       >
         Active
       </button>
-      <span class="slash"> / </span>
+      /
       <button
         mat-button
         [ngClass]="{ active: todoService.filter == 'completed' }"
@@ -29,7 +29,7 @@
     <div *ngIf="todoService.atLeastOneCompleted()">
       <button
         mat-button
-        class="clear-completed"
+        class="button button-clear-completed"
         (click)="todoService.clearCompleted()"
       >
         Clear Completed
@@ -37,19 +37,17 @@
     </div>
   </div>
   <div class="extra-container check-all">
-    <label>
-      <mat-checkbox
-        (change)="todoService.checkAllTodos()"
-        [(ngModel)]="!todoService.anyRemainingModel"
-        ><span class="check-all-text">Check All</span></mat-checkbox
-      >
-    </label>
-
-    <div>{{ todoService.remaining() }} Tasks left todo</div>
+    <mat-checkbox
+      (change)="todoService.checkAllTodos()"
+      [(ngModel)]="!todoService.anyRemainingModel"
+      ><span class="check-all-text">Check All</span></mat-checkbox
+    >
+    <div *ngIf="todoService.todoList.length > 0; else ''">
+      {{ todoService.remaining() }} Tasks left todo
+    </div>
   </div>
-  <div role="list" class="items">
+  <div role="list">
     <app-todo-item
-      class="list-item"
       [@listAnimation]="todo"
       *ngFor="let todoItem of todoService.todosFiltered()"
       [todo]="todoItem"

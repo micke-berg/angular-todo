@@ -8,6 +8,15 @@
   min-width: 600px;
 }
 
+.extra-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  padding: 20px 0;
+}
+
 .todo-input {
   width: 100%;
   padding: 10px 18px;
@@ -21,29 +30,23 @@
   }
 }
 
-.extra-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 18px;
-  padding: 20px 0;
-}
-
 .check-all {
   padding-bottom: 30px;
-  border-bottom: 1px dotted #666;
+  border-bottom: 1px solid #666;
 }
 
 .check-all-text {
   margin-left: 12px;
 }
 
+.active {
+  color: white;
+}
+
 button {
   font-size: 16px;
-  margin: 0 2px;
   font-weight: 400;
-  appearance: none;
+  margin: 0 2px;
   transition: 0.2s;
   &:hover {
     color: white;
@@ -54,12 +57,7 @@ button {
   margin-left: -16px;
 }
 
-.clear-completed {
+.button-clear-completed {
   color: white;
-  font-weight: 400;
   margin-right: -16px;
-}
-
-.active {
-  color: white;
 }
