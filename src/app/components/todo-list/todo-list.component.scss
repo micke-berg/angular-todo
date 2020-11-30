@@ -1,78 +1,63 @@
 .todo-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
   width: 100%;
-  height: 100%;
+  margin: 0 auto;
   min-width: 600px;
-  padding: 0 20px;
-  background: rgb(215, 215, 215);
-  // flex-direction: column;
+}
+
+.extra-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  padding: 20px 0;
 }
 
 .todo-input {
   width: 100%;
   padding: 10px 18px;
   font-size: 18px;
-  margin-bottom: 10px;
-
+  font-weight: 700;
+  outline: none;
+  border: 0;
+  border-radius: 0;
   &:focus {
     outline: 0;
   }
 }
 
-.items {
-  height: 500px;
-  overflow-y: auto;
+.check-all {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #666;
 }
 
-.extra-container {
-  width: 600px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 18px;
-
-  padding-top: 14px;
-  margin-bottom: 14px;
-}
-
-.bottom-container {
-  background: rgb(215, 215, 215);
-  border-top: 1px solid rgb(187, 187, 187);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: sticky;
-  bottom: 60px;
-}
-
-button {
-  font-size: 14px;
-  background-color: rgb(244, 244, 244);
-  appearance: none;
-  transition: 0.2s;
-
-  &:hover {
-    background-color: rgb(164, 164, 164);
-    color: white;
-  }
-
-  &:focus {
-    outline: none;
-  }
+.check-all-text {
+  margin-left: 12px;
 }
 
 .active {
-  background: #3f51b5;
   color: white;
 }
 
-// CSS Transitions
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
+button {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 2px;
+  transition: 0.2s;
+  &:hover {
+    color: white;
+  }
 }
 
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.buttons {
+  margin-left: -16px;
+}
+
+.button-clear-completed {
+  color: white;
+  margin-right: -16px;
 }

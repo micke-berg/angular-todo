@@ -5,29 +5,18 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  color: #2c3e50;
-  margin-top: 60px;
+html {
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+  background-color: #222;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto;
-  height: 75px;
-}
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-html,
 body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Lato", Helvetica Neue, Arial, sans-serif;
+  line-height: 1.33333333;
+  color: #999;
 }

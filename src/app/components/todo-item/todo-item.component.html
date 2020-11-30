@@ -5,26 +5,37 @@
       (change)="todoService.doneEdit(todo)"
     >
     </mat-checkbox>
-    <div
-      class="todo-item-label"
-      *ngIf="!todo.editing; else editingTodo"
-      [ngClass]="{ completed: todo.completed }"
-      (dblclick)="todoService.editTodo(todo)"
-    >
-      {{ todo.title }}
-    </div>
+  </div>
+  <div
+    class="todo-item-label"
+    *ngIf="!todo.editing; else editingTodo"
+    [ngClass]="{ completed: todo.completed }"
+    (dblclick)="todoService.editTodo(todo)"
+  >
+    {{ todo.title }}
+  </div>
+  <ng-template #editingTodo>
     <input
-      #editingTodo
       type="text"
-      class="todo-item-edit"
+      class="todo-edit-input"
       *ngIf="todo.editing"
       [(ngModel)]="todo.title"
       (blur)="todoService.doneEdit(todo)"
       (keyup.enter)="todoService.doneEdit(todo)"
       (keyup.esc)="todoService.cancelEdit(todo)"
     />
-  </div>
-  <div class="remove-item" (click)="todoService.deleteTodo(todo.id)">
-    &times;
+  </ng-template>
+
+  <div class="todo-item-right">
+    <div
+      class="edit-todo-item"
+      (click)="todoService.editTodo(todo)"
+      (dblclick)="todoService.editTodo(todo)"
+    >
+      <mat-icon>edit</mat-icon>
+    </div>
+    <div class="remove-todo-item" (click)="todoService.deleteTodo(todo.id)">
+      <mat-icon>clear</mat-icon>
+    </div>
   </div>
 </div>
