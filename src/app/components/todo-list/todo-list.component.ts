@@ -1,4 +1,6 @@
 import { ThemePalette } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
+import { TodoItem } from '../../Models/todo';
 import {
   trigger,
   style,
@@ -8,15 +10,12 @@ import {
   query,
   stagger,
 } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
-import { TodoItem } from '../../Models/todo';
 
 export interface Task {
   name: string;
   completed: boolean;
   color: ThemePalette;
-  subtasks?: Task[];
 }
 @Component({
   selector: 'todo-list',
@@ -37,7 +36,7 @@ export interface Task {
                 style({
                   opacity: 0.5,
                   transform: 'translateY(8px)',
-                  offset: 0.2,
+                  offset: 0.4,
                 }),
                 style({ opacity: 1, transform: 'translateY(0)', offset: 1.0 }),
               ])
@@ -62,6 +61,5 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.todo = this.todoService.getTodoList();
-    // this.todoService.todoList = JSON.parse(localStorage.getItem('todos'));
   }
 }
