@@ -42,15 +42,11 @@
       [(ngModel)]="!todoService.anyRemainingModel"
       ><span class="check-all-text">Check All</span></mat-checkbox
     >
-    <div *ngIf="todoService.todoList.length > 0; else ''">
+    <div *ngIf="todoService.todoList.length != 0">
       {{ todoService.remaining() }} Tasks left todo
     </div>
   </div>
   <div role="list">
-    <app-todo-item
-      [@listAnimation]="todo"
-      *ngFor="let todoItem of todoService.todosFiltered()"
-      [todo]="todoItem"
-    ></app-todo-item>
+    <app-todo-item [@listAnimation]="todo"></app-todo-item>
   </div>
 </div>

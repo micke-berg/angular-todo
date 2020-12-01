@@ -1,4 +1,5 @@
 import { Injectable, OnInit, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { TodoItem } from '../Models/todo';
 import { StorageService } from './storage.service';
 
@@ -7,13 +8,15 @@ const todoListStorageKey = 'todos';
   providedIn: 'root',
 })
 export class TodoService {
-  todosChanged = new EventEmitter<TodoItem[]>();
   todoTitle: string = '';
   idForTodo: number = 4;
   beforeEditCache: string = '';
   filter: string = 'all';
   anyRemainingModel: boolean = true;
-  todoList: TodoItem[];
+  todoList: TodoItem[] = [];
+
+  private todo = new Subject<TodoItem[]>();
+  $todo = this.todo.asObservable();
 
   constructor(private storageService: StorageService) {
     this.todoList = storageService.getData(todoListStorageKey) || [];
@@ -24,9 +27,7 @@ export class TodoService {
   }
 
   saveToStorage(): void {
-    console.log('save to storage');
     this.storageService.setData(todoListStorageKey, this.todoList);
-    this.todosChanged.emit(this.todoList.slice());
   }
 
   addTodo(todoTitle: string): void {
@@ -40,7 +41,7 @@ export class TodoService {
       editing: false,
     });
     this.saveToStorage();
-    this.todosChanged.emit(this.todoList.slice());
+    this.todo.next(this.todoList.slice());
     this.idForTodo++;
   }
 
@@ -81,14 +82,12 @@ export class TodoService {
   }
 
   clearCompleted(): void {
-    console.log('clearCompleted');
     this.todoList = this.todoList.filter((todo) => !todo.completed);
     this.saveToStorage();
     this.anyRemainingModel = true;
   }
 
   checkAllTodos(): void {
-    console.log('checkAllTodos');
     this.todoList.forEach(
       (todo) => (todo.completed = (<HTMLInputElement>event.target).checked)
     );
