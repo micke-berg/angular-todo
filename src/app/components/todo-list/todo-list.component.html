@@ -36,15 +36,16 @@
       </button>
     </div>
   </div>
-  <div class="extra-container check-all">
+  <div
+    class="extra-container check-all"
+    *ngIf="todoService.todoList.length != 0"
+  >
     <mat-checkbox
       (change)="todoService.checkAllTodos()"
       [(ngModel)]="!todoService.anyRemainingModel"
       ><span class="check-all-text">Check All</span></mat-checkbox
     >
-    <div *ngIf="todoService.todoList.length != 0">
-      {{ todoService.remaining() }} Tasks left todo
-    </div>
+    <div>{{ todoService.remaining() }} Tasks left todo</div>
   </div>
   <div role="list">
     <app-todo-item [@listAnimation]="todo"></app-todo-item>
