@@ -1,4 +1,4 @@
-import { Injectable, OnInit, EventEmitter } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { TodoItem } from '../Models/todo';
 import { StorageService } from './storage.service';
@@ -103,10 +103,6 @@ export class TodoService {
     } else if (this.filter === 'completed') {
       return this.todoList.filter((todo) => todo.completed);
     }
-    return this.todoList;
-  }
-
-  getTodoList() {
     return this.todoList;
   }
 }
