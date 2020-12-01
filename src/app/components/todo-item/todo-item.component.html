@@ -1,40 +1,36 @@
-<div class="todo-item">
+<div *ngFor="let todoItem of todoService.todosFiltered()" class="todo-item">
   <div class="todo-item-left">
-    <mat-checkbox
-      [(ngModel)]="todo.completed"
-      (change)="todoService.doneEdit(todo)"
-    >
-    </mat-checkbox>
+    <mat-checkbox [(ngModel)]="todoItem.completed"> </mat-checkbox>
   </div>
   <div
     class="todo-item-label"
-    *ngIf="!todo.editing; else editingTodo"
-    [ngClass]="{ completed: todo.completed }"
-    (dblclick)="todoService.editTodo(todo)"
+    *ngIf="!todoItem.editing; else editingTodo"
+    [ngClass]="{ completed: todoItem.completed }"
+    (dblclick)="todoService.editTodo(todoItem)"
   >
-    {{ todo.title }}
+    {{ todoItem.title }}
   </div>
   <ng-template #editingTodo>
     <input
       type="text"
       class="todo-edit-input"
-      *ngIf="todo.editing"
-      [(ngModel)]="todo.title"
-      (blur)="todoService.doneEdit(todo)"
-      (keyup.enter)="todoService.doneEdit(todo)"
-      (keyup.esc)="todoService.cancelEdit(todo)"
+      *ngIf="todoItem.editing"
+      [(ngModel)]="todoItem.title"
+      (blur)="todoService.doneEdit(todoItem)"
+      (keyup.enter)="todoService.doneEdit(todoItem)"
+      (keyup.esc)="todoService.cancelEdit(todoItem)"
     />
   </ng-template>
 
   <div class="todo-item-right">
     <div
       class="edit-todo-item"
-      (click)="todoService.editTodo(todo)"
-      (dblclick)="todoService.editTodo(todo)"
+      (click)="todoService.editTodo(todoItem)"
+      (dblclick)="todoService.editTodo(todoItem)"
     >
       <mat-icon>edit</mat-icon>
     </div>
-    <div class="remove-todo-item" (click)="todoService.deleteTodo(todo.id)">
+    <div class="remove-todo-item" (click)="todoService.deleteTodo(todoItem.id)">
       <mat-icon>clear</mat-icon>
     </div>
   </div>
