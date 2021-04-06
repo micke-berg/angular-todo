@@ -1,7 +1,7 @@
 <app-todo-input></app-todo-input>
 <div class="todo-list">
   <div class="extra-container">
-    <div class="buttons">
+    <div class="buttons" *ngIf="todoService.todoList.length != 0">
       <button
         mat-button
         [ngClass]="{ active: todoService.filter == 'all' }"
@@ -32,7 +32,7 @@
         class="button button-clear-completed"
         (click)="todoService.clearCompleted()"
       >
-        Clear Completed
+        Delete Completed
       </button>
     </div>
   </div>
